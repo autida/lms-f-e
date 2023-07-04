@@ -30,14 +30,7 @@ const Content = () => {
                     Fusce sed urna nec odio ultrices eleifend. Aliquam erat
                     volutpat. Sed sed dapibus ligula, vel efficitur mi. Maecenas
                     lobortis posuere odio id bibendum. Praesent at mauris ut
-                    ante mollis scelerisque. Integer sit amet efficitur sem.
-                    Curabitur vehicula accumsan arcu a congue. Nam et
-                    consectetur eros. Sed a ligula a justo condimentum
-                    hendrerit. Vestibulum sed justo condimentum, finibus justo
-                    vel, pharetra dui. Suspendisse ut elementum erat. Quisque
-                    mollis venenatis tempus. Integer euismod justo ut libero
-                    sagittis condimentum. Donec sit amet elit nisl. Nunc ut
-                    tortor ipsum. Sed consectetur erat ac facilisis vestibulum.
+                    ante mollis scelerisque.
                   </p>
                 </div>
               </div>
@@ -51,18 +44,11 @@ const Content = () => {
                 </div>
                 <div className="card-body">
                   <p className="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Fusce sed urna nec odio ultrices eleifend. Aliquam erat
                     volutpat. Sed sed dapibus ligula, vel efficitur mi. Maecenas
                     lobortis posuere odio id bibendum. Praesent at mauris ut
-                    ante mollis scelerisque. Integer sit amet efficitur sem.
-                    Curabitur vehicula accumsan arcu a congue. Nam et
-                    consectetur eros. Sed a ligula a justo condimentum
-                    hendrerit. Vestibulum sed justo condimentum, finibus justo
-                    vel, pharetra dui. Suspendisse ut elementum erat. Quisque
-                    mollis venenatis tempus. Integer euismod justo ut libero
-                    sagittis condimentum. Donec sit amet elit nisl. Nunc ut
-                    tortor ipsum. Sed consectetur erat ac facilisis vestibulum.
+                    ante mollis scelerisque.
                   </p>
                 </div>
               </div>
@@ -76,18 +62,11 @@ const Content = () => {
                 </div>
                 <div className="card-body">
                   <p className="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Fusce sed urna nec odio ultrices eleifend. Aliquam erat
                     volutpat. Sed sed dapibus ligula, vel efficitur mi. Maecenas
                     lobortis posuere odio id bibendum. Praesent at mauris ut
-                    ante mollis scelerisque. Integer sit amet efficitur sem.
-                    Curabitur vehicula accumsan arcu a congue. Nam et
-                    consectetur eros. Sed a ligula a justo condimentum
-                    hendrerit. Vestibulum sed justo condimentum, finibus justo
-                    vel, pharetra dui. Suspendisse ut elementum erat. Quisque
-                    mollis venenatis tempus. Integer euismod justo ut libero
-                    sagittis condimentum. Donec sit amet elit nisl. Nunc ut
-                    tortor ipsum. Sed consectetur erat ac facilisis vestibulum.
+                    ante mollis scelerisque.
                   </p>
                 </div>
               </div>
