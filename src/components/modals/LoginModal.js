@@ -2,8 +2,12 @@ import "./Modal.css";
 import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import Alert from "../alerts/Alert";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import "sweetalert2/dist/sweetalert2.min.css";
 
 const LoginModal = ({ isOpen, onClose, children }) => {
+  const { setAuth } = useAuth();
   const userRef = useRef();
   const errRef = useRef();
 
@@ -12,9 +16,9 @@ const LoginModal = ({ isOpen, onClose, children }) => {
   const [errMsg, setErrMsg] = useState("");
   const [success, setSucess] = useState(false);
   const [isAlertOpen, setIsAlertOpen] = useState(false);
+
   //create a function to open the modal
   const alertOpen = () => {
-    console.log("here");
     setIsAlertOpen(true);
   };
 
@@ -33,25 +37,23 @@ const LoginModal = ({ isOpen, onClose, children }) => {
     return null; // If modal is not open, render nothing
   }
 
+  const showAlert = () => {
+    Swal.fire({
+      title: "Login Successful!",
+      // text: "Are you sure you want to proceed?",
+      icon: "success",
+      confirmButtonText: "PROCEED",
+      customClass: {
+        confirmButton: "custom-confirm-button-class",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setSucess(true);
+      }
+    });
+  };
+
   const handleSubmit = async (e) => {
-    //when login is successful show success alert
-    alertOpen();
-    //this is a sample code
-    // transfer it inside if statement response 200
-
-    // alertClose();
-
-    // if (!isAlertOpen) {
-    //   setTimeout(() => {
-    //     console.log("test");
-    //     setSucess(true);
-      
-    //   }, 3000);
-     
-    //   return null;
-    // }
-
-    //end of sample code
     e.preventDefault();
     try {
       // Make an HTTP POST request to the login endpoint
@@ -66,21 +68,23 @@ const LoginModal = ({ isOpen, onClose, children }) => {
       // Check if the login was successful
       if (response.status === 200) {
         const accessKey = response.data.accessKey;
-        const role = response.data.role;
+        const role = response.data.roles;
+        setAuth({ role, accessKey });
         setUser("");
         setPwd("");
+        showAlert();
       } else {
         setErrMsg("Unauthorized!");
       }
     } catch (error) {
       if (error.response.status === 400) {
-        setErrMsg("Missing Username or Password");
+        setErrMsg("Missing Username or Password.");
       } else if (error.response.status === 401) {
-        setErrMsg("Unauthorized");
+        setErrMsg("Unauthorized!");
       } else {
-        setErrMsg("Login Failed");
+        setErrMsg("Login Failed!");
       }
-      // errRef.current.focus();
+      errRef.current.focus();
     }
   };
 
@@ -94,6 +98,13 @@ const LoginModal = ({ isOpen, onClose, children }) => {
           </div>
           <div className="modal-body">
             <form>
+              <p
+                ref={errRef}
+                className={errMsg ? "errmsg" : "offscreen"}
+                aria-live="assertive"
+              >
+                {errMsg}
+              </p>
               <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
                   Username
@@ -118,6 +129,8 @@ const LoginModal = ({ isOpen, onClose, children }) => {
                   type="password"
                   className="form-control"
                   id="modalOpen"
+                  onChange={(e) => setPwd(e.target.value)}
+                  value={pwd}
                 />
               </div>
             </form>

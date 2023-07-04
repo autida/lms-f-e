@@ -1,17 +1,16 @@
-import React from 'react'
-import Content from "./Content"
-import Footer from "./Footer"
-import Header from "./Header"
-// import LoginModal from "./modals/LoginModal"
+import React from "react";
+import Content from "./Content";
+import Footer from "./Footer";
+import Header from "./Header";
 
 const Layout = () => {
   return (
     <div>
-        <Header />
-        <Content />
-        <Footer />
+      <Header />
+      <Content />
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

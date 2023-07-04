@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoginModal from "./modals/LoginModal";
+import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const Content = () => {
   // [getter, setter]
-  const [token, setToken] = useState("");
+  let [token, setToken] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const authCred = useAuth();
+  const navigate = useNavigate();
+
   //create a function to open the modal
   const modalOpen = () => {
     setIsModalOpen(true);
@@ -14,6 +20,11 @@ const Content = () => {
   const modalClose = () => {
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    setToken(authCred.auth.accessKey);
+  }, []);
+  console.log("test" + token);
   return (
     <>
       <div className="content">
@@ -44,7 +55,7 @@ const Content = () => {
                 </div>
                 <div className="card-body">
                   <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Fusce sed urna nec odio ultrices eleifend. Aliquam erat
                     volutpat. Sed sed dapibus ligula, vel efficitur mi. Maecenas
                     lobortis posuere odio id bibendum. Praesent at mauris ut
@@ -62,7 +73,7 @@ const Content = () => {
                 </div>
                 <div className="card-body">
                   <p className="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Fusce sed urna nec odio ultrices eleifend. Aliquam erat
                     volutpat. Sed sed dapibus ligula, vel efficitur mi. Maecenas
                     lobortis posuere odio id bibendum. Praesent at mauris ut
@@ -73,19 +84,26 @@ const Content = () => {
             </div>
           </div>
           <div className="content-button">
-            {token ? (
-              <button className="btn content-btn"> Go To Dashboard</button>
+            {authCred.auth.accessKey ? (
+              <button
+                onClick={() => navigate("/dashboard")}
+                className="btn content-btn"
+              >
+                Go To Dashboard
+              </button>
             ) : (
               <button onClick={modalOpen} className="btn content-btn">
                 Login
               </button>
             )}
+            {/* <button onClick={modalOpen} className="btn content-btn">
+              Login
+            </button> */}
           </div>
         </div>
       </div>
       <LoginModal isOpen={isModalOpen} onClose={modalClose}>
         {/* Modal content goes here */}
-       
       </LoginModal>
     </>
   );

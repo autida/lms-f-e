@@ -77,3 +77,28 @@ body.active-modal {
   z-index: 1;
 
 }
+
+ .errmsg {
+  text-align: center;
+  color: red;
+}
+
+.modal-pos {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1.4;
+  background-color: #f1f1f1 !important;
+  padding: 14px 28px;
+  border-radius: 5px !important;
+  max-width: 25rem !important;
+  min-width: 300px;
+  /* text-align: center !important; */
+  z-index: 1;
+
+}
+
+.custom-confirm-button-class {
+  background-color: #1a77b4 !important;
+}
