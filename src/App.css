@@ -1,55 +1,66 @@
-@import "bootstrap/dist/css/bootstrap.min.css";
-.App {
+.card {
+  background-color: #5398c7 !important;
+  border: #5398c7 !important;
+  box-shadow: 2px 2px 5px rgba(57, 57, 58, 0.3);
+}
+.card-header {
+  padding: 5px 8px;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+.card-body {
+  padding: 25px !important;
+}
+.card-text {
+  text-align: justify;
+}
+.content {
   text-align: center;
 }
 
-.App-header {
-  background-color: #ffffff;
-  min-height: 30vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: rgb(0, 0, 0);
-}
-.login-section {
-  padding: 0 80vh;
-}
-.auth-form-container {
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transform: translateY(-5px);
-  transition: transform 0.3s ease-in-out;
-  border-radius: 5px;
-}
-.auth-form-container .login-form{
-  display: flex;
-  flex-direction: column;
+.content-body {
+  padding: 10vh 30vh;
 }
 
-label {
-  text-align: left;
-  padding: 0.25rem 0;
-  background-color: #ffffff;
-  padding: 0 5px;
-  font-size: 14px;
-  color: #777777;
+.content-btn {
+  margin: 20px !important;
+  width: 20rem !important;
+  background-color: #1a77b4 !important;
+  border: #9b9b99 !important;
+  /* box-shadow: 2px 2px 5px rgba(33, 119, 233, 0.3); */
+}
+.content-btn:hover {
+    box-shadow: 3px 3px 6px rgba(33, 119, 233, 0.3);
+  }
+.content-card {
+  padding: 10px !important;
 }
 
-input {
-  margin: 0.5rem 0;
+.footer {
+  background-color: #eff2f4;
+  padding: 20px 0;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #ffffff;
 }
 
-button {
-  border: none;
-  background-color: rgb(116, 146, 226);
-  padding: 20px;
-  border-radius: 5px;
+.header {
+  background-color: #eff2f4;
+  padding: 50px 0;
+  text-align: center;
 }
 
+.row {
+    --bs-gutter-x: 0 !important;
+}
+
+/* Media query for screens smaller than 1024px */
+@media (max-width: 1300px) {
+  .content-body {
+    padding: 5vh 5vh;
+  }
+}
