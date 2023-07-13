@@ -5,6 +5,7 @@ import Alert from "../alerts/Alert";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.min.css";
+import Cookies from "js-cookie";
 
 const LoginModal = ({ isOpen, onClose, children }) => {
   const { setAuth } = useAuth();
@@ -37,7 +38,7 @@ const LoginModal = ({ isOpen, onClose, children }) => {
     return null; // If modal is not open, render nothing
   }
 
-  const showAlert = () => {
+  const showAlert = (r, aK) => {
     Swal.fire({
       title: "Login Successful!",
       // text: "Are you sure you want to proceed?",
@@ -49,6 +50,11 @@ const LoginModal = ({ isOpen, onClose, children }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         setSucess(true);
+        const expirationInSeconds = 10;
+        const objectToStore = { accessKey: aK, role: r };
+        Cookies.set("cookiesAndCream", JSON.stringify(objectToStore), {
+          expires: expirationInSeconds / (24 * 60 * 60),
+        });
       }
     });
   };
@@ -69,10 +75,16 @@ const LoginModal = ({ isOpen, onClose, children }) => {
       if (response.status === 200) {
         const accessKey = response.data.accessKey;
         const role = response.data.roles;
+        // Get the current time
+        const currentTime = new Date();
+
+        // Calculate the expiration time by adding 5 seconds to the current time
+        const expirationTime = new Date(currentTime.getTime() + 5000); // 5000 milliseconds = 5 seconds
+
         setAuth({ role, accessKey });
         setUser("");
         setPwd("");
-        showAlert();
+        showAlert(role, accessKey);
       } else {
         setErrMsg("Unauthorized!");
       }

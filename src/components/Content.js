@@ -4,7 +4,6 @@ import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 
 const Content = () => {
-  // [getter, setter]
   let [token, setToken] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 

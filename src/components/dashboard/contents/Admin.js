@@ -2,7 +2,7 @@ import React from "react";
 import Logout from "../../Logout";
 import "./content.css";
 
-const Admin = () => {
+const Admin = (accessKey) => {
   return (
     <>
       <div className="header">

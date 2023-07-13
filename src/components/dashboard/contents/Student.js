@@ -1,8 +1,34 @@
-import React from "react";
-import Logout from "../../Logout";
+import React, { useEffect } from "react";
+import axios from "axios";
 import "./content.css";
 
-const Student = () => {
+const Student = (token) => {
+  useEffect(() => {
+    console.log(token.accessKey);
+    if (token.accessKey) fetchAssignments();
+  }, []);
+  //fetch list of student assignments
+  const fetchAssignments = async () => {
+    try {
+      // Make an HTTP POST request to the login endpoint
+      const response = await axios.get(
+        "http://localhost:8080/api/assignments",
+        {
+          header: {
+            Authorization: `Bearer ${token.accessKey}`,
+          },
+        }
+      );
+
+      // Check if the login was successful
+      if (response.status === 200) {
+        console.log(response.json());
+      } else {
+        console.log("Unauthorized!");
+      }
+    } catch (error) {}
+  };
+
   return (
     <>
       <div className="header">
@@ -22,7 +48,7 @@ const Student = () => {
       <section>
         <div className="content-auth">
           <div className="row content-body-auth">
-            <h4>Complete</h4>
+            <h4>Needs Work</h4>
             <div className="col-md-4">
               <div className="content-card">
                 <div className="card">
@@ -74,7 +100,7 @@ const Student = () => {
       <section>
         <div className="content-auth">
           <div className="row content-body-auth">
-            <h4>Needs Work</h4>
+            <h4>Complete</h4>
             <div className="col-md-4">
               <div className="content-card">
                 <div className="card">
